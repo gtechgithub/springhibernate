@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="com.javapoint.Employee"  table ="EMPLOYEE">
+		<id name="id" column="id" type="int">
+			<generator class="increment"/>		
+		</id>
+		<property name="firstName" column="first_name" type="string"></property>
+		<property name="lastName" column="last_name" type="string"></property>
+		<property name="salary" column="salary" type="int"></property>
+		
+		<set lazy="false" name="certificates" cascade="all">
+			<key column="employee_id"></key>
+			<one-to-many  class="com.javapoint.Certificate"/>
+		</set>
+	</class>
+</hibernate-mapping>
